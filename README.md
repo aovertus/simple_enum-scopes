@@ -7,17 +7,17 @@ It'll avoid to write a bunch of scopes doing basically the same job.
 ## Usage
 
 ```ruby
-class User
-    as_enum :states, [:very_bad, :bad, :good, :very_good]
+class Object
+    as_enum :state, [:very_bad, :bad, :good, :very_good]
 end
 
 
-User.status_as(:bad, :very_good)
-# User.where(status_cd: [User.bad, User.very_good])
+Object.states_as(:bad, :very_good)
+# Object.where(state_cd: [Object.states[:bad], Object.states[:very_good]])
 
 
-User.status_between(:bad, :very_good)
-# User.where(status_cd: User.bad..User.very_good)
+Object.state_between(:bad, :very_good)
+# Object.where(state_cd: Object.states[:bad]..Object.states[:very_good])
 ```
 
 ## License
