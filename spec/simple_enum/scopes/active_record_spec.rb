@@ -14,7 +14,7 @@ describe SimpleEnum::Scopes, active_record: true do
           let!(:good)      { klass.create(state: :good) }
 
           it 'returns the object in range' do
-            objects = klass.state_between(:bad, :very_good)
+            objects = klass.between_states(:bad, :very_good)
             expect(objects.count).to eq(2)
             expect(objects.map(&:state)).to eq %i(bad good)
           end
@@ -24,7 +24,7 @@ describe SimpleEnum::Scopes, active_record: true do
           let!(:very_good)      { klass.create(state: :very_good) }
 
           it 'returns no object' do
-            objects = klass.state_between(:very_bad, :good)
+            objects = klass.between_states(:very_bad, :good)
             expect(objects).to be_empty
           end
         end

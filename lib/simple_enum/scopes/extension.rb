@@ -9,7 +9,7 @@ module SimpleEnum
       private
 
       def define_range_scope_method(enum, accessor)
-        singleton_class.send(:define_method, "#{accessor.name}_between") do |min_val, max_val|
+        singleton_class.send(:define_method, "between_#{accessor.name.pluralize}") do |min_val, max_val|
           where(accessor.source => enum[min_val]..enum[max_val])
         end
       end
